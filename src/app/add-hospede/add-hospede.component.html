@@ -1,0 +1,62 @@
+<h3>Create Hospede</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" >
+    <div [hidden]="submitted" style="width: 400px;">
+      <form [formGroup]="Hospedesaveform" #saveHospede (ngSubmit)="saveHospede(saveHospede)">
+          <div class="form-group">
+              <label for="name">Hospede Name</label>
+              <input type="text" class="form-control"  formControlName="Hospede_nome" data-toggle="tooltip" 
+                 data-placement="right" title="Enter Hospede Name" >
+              <div class="alert alert-danger" *ngIf = "(HospedeNome.touched) && (HospedeNome.invalid)" 
+                style="margin-top: 5px;">
+                  <span *ngIf="HospedeNome.errors.required">Hospede Name is Required</span>
+                    <span *ngIf = "HospedeNome.errors.minlength"> 
+                        MinLength Error 
+                    </span>                   
+                </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="name">Hospede Email</label>
+              <input type="text" class="form-control" formControlName="Hospede_documento" 
+                data-toggle="tooltip" data-placement="right" title="Enter Hospede Email">
+                <div class="alert alert-danger" *ngIf = "(HospedeDocumento.touched) && (HospedeDocumento.invalid)" 
+                style="margin-top: 5px;">
+                  <span *ngIf="HospedeDocumento.errors.required">Hospede Email is Required</span>
+                    <span *ngIf = "HospedeDocumento.errors.email"> 
+                        Invalid Email Format 
+                    </span>                   
+                </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="branch">Hospede Branch</label>
+                <select class="form-control" formControlName="Hospede_telefone" data-toggle="tooltip" 
+                      data-placement="right" title="Select Hospede Branch">
+                    <option value="null">--Select Branch--</option>
+                  <option value="B-Tech">B-Tech</option>
+                  <option value="BCA">BCA</option>
+                  <option value="MCA">MCA</option>
+                  <option value="M-Tech">M-Tech</option>
+                </select>
+          </div>
+  
+          <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+  </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+      <div [hidden]="!submitted">
+         <h4>Hospede Added SuccessFully!</h4>
+         <button (click)="addHospedeForm()" class='btn btn-primary'>Add More Hospede</button>
+      </div>      
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+
